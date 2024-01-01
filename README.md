@@ -1,3 +1,5 @@
+## Developed by: Shivaram.M
+## RegisterNumber: 212223040195
 # Exp-6-Synchornous-counters - up counter and down counter 
 ### AIM: To implement 4 bit up and down counters and validate  functionality.
 ### HARDWARE REQUIRED:  – PC, Cyclone II , USB flasher
@@ -45,44 +47,92 @@ This type of counter is normally referred to as a Down Counter, (CTD). In a bina
 
 
 4-bit Count Down Counter
-### Procedure
-/* write all the steps invloved */
+### Procedure :
+1.Create a New Project: Open Quartus and create a new project by selecting "File" > "New Project Wizard." Follow the wizard's instructions to set up your project, including specifying the project name, location, and target device (FPGA). 2.Create a New Design File:
 
+Once the project is created, right-click on the project name in the Project Navigator and select "Add New File." Choose "Verilog HDL File" or "VHDL File," depending on your chosen hardware description language. ⦁ Write the Combinational Logic Code:
 
+Open the newly created Verilog or VHDL file and write the code for your combinational logic. 3.Compile the Project: To compile the project, click on "Processing" > "Start Compilation" in the menu. Quartus will analyze your code, synthesize it into a netlist, and perform optimizations based on your target FPGA device. 4.Analyze and Fix Errors:
 
-### PROGRAM 
-/*
-Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
+If there are any errors or warnings during the compilation process, Quartus will display them in the Messages window. Review and fix any issues in your code if necessary. View the RTL diagram. 5.Verification: Click on "File" > "New" > "Verification/Debugging Files" > "University Program VWF". Once Waveform is created Right Click on the Input/Output Panel > " Insert Node or Bus" > Click on Node Finder > Click On "List" > Select All.
 
+Give the Input Combinations according to the Truth Table and then simulate the Output Waveform.
 
+### PROGRAM :
+## Up counter :
 
+module exp_6(clk, A);
 
+input clk;
 
+output reg [2:0]A;
+
+always @(posedge clk)
+
+begin
+
+ A[2]=(((A[0])&(A[1]))^A[2]);
+	
+ A[1]=(A[0])^A[1];
+	
+ A[0]=A[0]^1;
+
+end
+
+endmodule
+
+## Down Counter :
+
+module EXP_6B(clk,A);
+
+input clk;
+
+output reg[2:0]A;
+
+always @(posedge clk)
+
+begin
+
+ A[2]=(((~A[0])&(~A[1]))^A[2]);
+
+A[1]=(~A[0])^A[1];
+	
+A[0]=1^A[0];
+
+end
+
+endmodule
 
 ### RTL LOGIC UP COUNTER AND DOWN COUNTER  
 
+## Up counter :
 
+![image](https://github.com/Shivaram2525/Exp-7-Synchornous-counters-/assets/144226303/ccc0946f-9fa1-445c-a6c5-e78192648a42)
 
+## Down counter :
 
-
-
-
-
+![image](https://github.com/Shivaram2525/Exp-7-Synchornous-counters-/assets/144226303/9db343ce-6445-48b3-904d-ea603c16fb74)
 
 ### TIMING DIGRAMS FOR COUNTER  
 
+## Up counter :
 
+![image](https://github.com/Shivaram2525/Exp-7-Synchornous-counters-/assets/144226303/b5f2b4bb-250e-44ce-84cb-5d2f0b2bb2a0)
 
+## Down counter :
+
+![image](https://github.com/Shivaram2525/Exp-7-Synchornous-counters-/assets/144226303/02c3a4b2-c92d-45eb-9c4f-870169a49152)
 
 
 ### TRUTH TABLE 
 
+## Up counter :
 
+![image](https://github.com/Shivaram2525/Exp-7-Synchornous-counters-/assets/144226303/d78f182c-23de-4258-b530-6918705c1255)
 
+## Down counter :
 
-
+![image](https://github.com/Shivaram2525/Exp-7-Synchornous-counters-/assets/144226303/c732ecdd-2364-4bf9-8fa1-e067301eecd8)
 
 ### RESULTS 
+By this we have verified the truth table of 4-bit up-counter using verilog.
